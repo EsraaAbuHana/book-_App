@@ -12,15 +12,20 @@ app.set('view engine','ejs');
 // localhost:3000/hello
 app.get('/',(req,res)=>{
 res.render('pages/index');
+// res.send('helloooworld');
+
 })
-// let varible=intitle;
+
  //www.googleapis.com/books/v1/volumes?q=search+terms
 app.get('/searches/new',(req,res)=>{
+    let varSearch=intitle;
     // console.log(req.body);
     // res.render('pages/searches/new');
-// })
-// let url =`//www.googleapis.com/books/v1/volumes?q=${varible}`;
-let url =`//www.googleapis.com/books/v1/volumes?q=${variabel}`;
+
+// let url =`//www.googleapis.com/books/v1/volumes?q=${varSearch}`;
+// let url =`//www.googleapis.com/books/v1/volumes?q=apple`;
+let url =`//www.googleapis.com/books/v1/volumes?q='${varSearch}'`;
+
 superagent.get (url)
 .then (booksResult =>{
 console.log(booksResult.body.items);
