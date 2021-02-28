@@ -15,7 +15,7 @@ res.render('pages/index');
 // res.send('helloooworld');
 
 })
-
+//inauthor || intitle
  //www.googleapis.com/books/v1/volumes?q=search+terms
 app.get('/searches/new',(req,res)=>{
     let varSearch=intitle;
@@ -30,6 +30,7 @@ superagent.get (url)
 .then (booksResult =>{
 console.log(booksResult.body.items);
 res.render('pages/searches/show',{myList:booksResult.body.items});
+
 })
 })
 function Book(bookData) {
