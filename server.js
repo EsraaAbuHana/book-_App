@@ -1,34 +1,37 @@
 'use strict';
 
 const express = require('express');
+const pg = require('pg');
+
 require('dotenv').config();
-const superagent = require('superagent');
-const ejs = require('ejs');
-const PORT = process.env.PORT || 3000;
 const app = express();
-app.use(express.static('./public'));
+const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({extended:true}));
+app.use(express.static('./public'));
+
+const client = new pg.Client(process.env.DATABASE_URL);
+
 app.set('view engine','ejs');
+
+const superagent = require('superagent');
+
+app.set('view engine', 'ejs');
+
 // localhost:3000/hello
+
 app.get('/',(req,res)=>{
 res.render('pages/index');
-// res.send('helloooworld');
-
 })
-//inauthor || intitle
  //www.googleapis.com/books/v1/volumes?q=search+terms
 app.get('/searches/new',(req,res)=>{
-    // let varSearch=intitle;
     // console.log(req.body);
     res.render('pages/searches/new');
 })
 
 
-//im here
 app.post('/searches',(req,res)=>{
     // let varSearch=req.body.B;
-// let url =`//www.googleapis.com/books/v1/volumes?q='${varSearch}'`;
-// let url=https://www.googleapis.com/books/v1/volumes?q=+;
+
     let searchMethod=req.body.searchBook;
     let url;
     if (req.body.radioSelect === 'Title' ) {
@@ -69,10 +72,4 @@ app.get('/error', (req,res) => {
 app.listen(PORT,()=>{
     console.log(`Listening on PORT ${PORT}`);
 })
-// superagent.get (url)
-// .then (booksResult =>{
-// console.log(booksResult.body.items);
-// res.render('pages/searches/show',{myList:booksResult.body.items});
 
-// // })
-// // })
