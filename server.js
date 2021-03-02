@@ -4,6 +4,7 @@ require('dotenv').config();
 const superagent = require('superagent');
 // const ejs = require('ejs');
 const pg = require('pg');
+const methodOverride = require('method-override');
 const client = new pg.Client(process.env.DATABASE_URL);
 
 const PORT = process.env.PORT || 3000;
@@ -13,6 +14,8 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({extended:true}));
 
 app.set('view engine','ejs');
+
+app.use(methodOverride('_method'));
 
 // localhost:3000/hello
 // app.get('/hello',(req,res)=>{
@@ -26,7 +29,7 @@ app.get('/', (req,res) => {
     .then(result =>{
         // console.log(result.rows);
 
-        res.render('pages/index',{booklist:result.rows});
+        res.render('pages/index',{booklist:result.rows,bookcount:result.rowCount});
     
 })
 })
@@ -52,10 +55,40 @@ let SQL = `INSERT INTO books (author,title,isbn,image_url,description) VALUES ($
   //   console.log(result.rows);
   //   res.redirect(`../show/${result.rows[0].id}`);
   // })
+  
   .then((result) =>{
-   res.redirect('/books/${result.rows[0].id}');
+    console.log(result.rows[0].id);
+   res.redirect(`/books/${result.rows[0].id}`);
   })
 })
+
+app.put('/updateBook/:id',(req,res)=>{
+  // console.log(req.body);
+  let {author,title,isbn,image_url,description} = req.body;
+  let SQL = `UPDATE books SET author=$1,title=$2,isbn=$3,image_url=$4,description=$5 WHERE id =$6;`;
+  let values = [author, title,isbn,image_url,description,req.params.id];
+  client.query(SQL, values)
+    .then(() => {
+      res.redirect(`/books/${req.params.id}`);
+    })
+})
+
+
+app.delete('/deleteBook/:id',(req,res) =>{
+  let SQL = `DELETE FROM books WHERE id=$1;`;
+  let value = [req.params.id];
+  client.query(SQL,value)
+  .then(()=>{
+    res.redirect('/');
+  })
+})
+
+
+
+
+
+
+
 
 
 
@@ -68,9 +101,9 @@ app.post('/searches',(req,res) =>{
 let searchMethod=req.body.searchbox;
 let url;
 if (req.body.radioselect === 'Title' ) {
- url = `https://www.googleapis.com/books/v1/volumes?q=${searchMethod}+intitle`;
+ url = `https://www.googleapis.com/books/v1/volumes?q=+intitle:${searchMethod}`;
 } else if(req.body.radioselect === 'Author') {
-url =`https://www.googleapis.com/books/v1/volumes?q=${searchMethod}+inauthor`;
+url =`https://www.googleapis.com/books/v1/volumes?q=+inauthor:${searchMethod}`;
 }
 superagent.get (url)
 .then (booksResult =>{
@@ -93,20 +126,25 @@ res.render('pages/searches/show',{mylist:booksArr});
 //Book constructor
 
 function Book(bookData) {
-    this.image_url =bookData.volumeInfo.imageLinks.thumbnail;
+    this.image_url =(bookData.volumeInfo.imageLinks)?bookData.volumeInfo.imageLinks.thumbnail:`https://i.imgur.com/J5LVHEL.jpg`;
     this.title=bookData.volumeInfo.title || 'no title available for this Book';
-    this.authors=bookData.volumeInfo.authors || 'no Author';
+    this.author=(bookData.volumeInfo.authors)?bookData.volumeInfo.authors:'no Author';
     this.description=bookData.volumeInfo.description || 'no description';
-    this.isbn=bookData.volumeInfo.industryIdentifiers[0].identifier || 'No ISBN';
+    this.isbn=(bookData.volumeInfo.industryIdentifiers && bookData.volumeInfo.industryIdentifiers[0].type + '' +
+    bookData.volumeInfo.industryIdentifiers[0].identifier) || 'No ISBN';
     
+}
+function errorHandler(error, req, res) {
+  // response.status(500).send(error);
+  res.render('error', { errorList: error })
 }
 
 
 
-app.get('/error', (req,res) => {
-        res.status(500).send('Error in Route');
+// app.get('/error', (req,res) => {
+//         res.status(500).send('Error in Route');
            
-})
+// })
 client.connect()
 .then (() =>{
 app.listen(PORT,()=>{

@@ -22,13 +22,14 @@ header {
 
 
 } 
-body{background-color: rgb(159, 163, 163);
+
+body{background-color:#bbb;
     font-family: Arial, Helvetica, sans-serif;
 
         display: flex;
         flex-direction: column;
 justify-content: center;    }
-#but{
+#but , .viewBut{
     font-size: xx-large;
     width: 100%;
     height:100px;
@@ -39,12 +40,36 @@ background-color: rgb(0, 0, 0);
 color: white;
 border-radius: 5px;
 }
-div{
-    background-color: rgba(102, 92, 92, 0.699);
-    color: white;
-    text-align: center;
+.viewBut{
+  margin-bottom: 10%;
+  width: 50%;
 }
-
+em{color: black;
+font-size: larger;}
+div{padding: 10px;
+    background-color: rgba(219, 216, 216, 0.979);
+    color: white;
+    text-align: center; 
+    border: white solid 2px;
+    border-radius: 5px;
+    width: 70%;
+    margin: auto;
+margin-bottom: 40px;
+}
+.counter{
+  width: 100%;
+  background-color: rgb(92, 85, 85);
+  margin-bottom: 30px;
+  border: 0px;
+    border-radius: 0px;
+}
+div img{
+  
+  height:350px ;
+  width: 300px;
+ 
+  border: white solid 6px;
+}
    fieldset{
     background-color: lightgrey;
     border-radius: 5px;
@@ -78,7 +103,7 @@ width: 98%;
       justify-content: space-between;
   }
   
-user agent stylesheet
+/* user agent stylesheet */
 label {
     cursor: default;
 }
