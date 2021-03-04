@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/reset.css">
+        <link rel="stylesheet" href="./styles/layout.css">
+        <link rel="stylesheet" href="./styles/bace.css">
+    
+        <link rel="stylesheet" href="./styles/modules.css">
+        <title>Test</title>
+    </head>
 </head>
+
 <body>
-    <h3>Error Message </h3>
+    <header>
+        <h1>Best Books! </h1>
+        <div class="dropdown"><button class="menu">
+                <!-- <img src="./styles/overlay.png" alt=""> -->
+            </button>
+            <div class="dropdown-content">
+                <a href="/">Home </a>
+                <a href="/searches/new">Search The Google Book Api</a>
+            </div>
+        </div>
+    </header>
+    <p><%= errorList %></p>
+
+    <footer> <span class="dot"></span> <span class="dot"></span>
+        <span class="dot"></span> <span class="dot"></span>
+    </footer>
+
 </body>
 </html>

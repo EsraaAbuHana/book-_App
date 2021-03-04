@@ -1,28 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/bace.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+    <title>Show Books</title>
 </head>
-
 <body>
-    <header><h1>Best Books!</h1></header>
-    <ul>
-        <% myList.forEach(book=>{ %>
-            <li><img src=<%= book.img %>  alt=""></li>
-            <li>
-                <%= book.title %>
-            </li>
-            <li>
-                <%= book.authors %>
-            </li>
-            <li><%= book.description %> </li>
-            <% }) %> 
-    </ul>
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
-</body>
+    <header>
+        <h1>Best Books! </h1>
+        <div class="dropdown"><button class="menu">
+                <!-- <img src="./styles/overlay.png" alt=""> -->
+            </button>
+            <div class="dropdown-content">
+                <a href="/">Home </a>
+                <a href="/searches/new" >Search The Google Book Api</a>
+            </div>
+        </div>
+    </header>
+    <div class="counter">
+        <h2>
+           Search Result
+        </h2>
+    </div>
+   
+        <% mylist.forEach(book =>{  %>
+         <form action="/addBook">
+        <div>
+        <img src=<%=book.image_url %> alt="">
+        <h2><%=book.title %></h2>
+        <h3><%=book.authors %></h3>
+        <p><%=book.description %></p>
+        <button class="showbut"><a href="/books/<%= book.id %>">View Details</a></button>
+        <button type="submit" class="showbut">Add This Book</button>
+        </div>
+    </form class="addbookclass">
+         <% }) %>  
 
+        <% mylist.forEach(book => { %>
+            <div>
+               <img id="show" src="<%= book.image_url %>"> 
+               <h2 id="show"><%=book.title %></h2>
+               <h3 id="show"><%=book.author%></h3>
+               <p id="show"><%=book.description%></p>
+               <form id="show" action="/addBooks" method="post">
+                   <input type="hidden" name="image_url" value="<%= book.image_url%>">
+                   <input type="hidden" name="title" value="<%= book.title%>">
+                   <input type="hidden" name="author" value="<%= book.author%>">
+                   <input type="hidden" name="description" value="<%= book.description%>">
+                   <input type="hidden" name="isbn" value="<%= book.isbn%>">
+                   <button type="submit" class="showbut">Select Book</button>
+               </form></div>
+           
+       <% }) %>
+
+       <footer> <span class="dot"></span> <span class="dot"></span>
+        <span class="dot"></span> <span class="dot"></span>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="./app.js"></script>
+        
+</body>
 </html>

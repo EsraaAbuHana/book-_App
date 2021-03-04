@@ -1,0 +1,74 @@
+@import url("reset.css");
+@import url("layout.css");
+@import url("modules.css");
+
+header {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    height: 97px;
+    text-align:left;
+
+
+} 
+h1{font-size:xxx-large;}
+body{background-color:#bbb;
+    font-family: Arial, Helvetica, sans-serif;
+
+        display: flex;
+        flex-direction: column;
+justify-content: center;    }
+
+footer{
+
+	height: 75px;
+	background-color: black;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+  position: fixed;
+    bottom: 0;
+    width: 100%;
+	/* position: fixed;bottom: 0;left: 0; */
+}
+ div{padding: 10px;
+    background-color: rgba(219, 216, 216, 0.979);
+    color: white;
+    text-align: center; 
+    border: white solid 2px;
+    border-radius: 5px;
+    width: 70%;
+    margin: auto;
+margin-bottom: 40px;
+}
+fieldset{
+    background-color: lightgrey;
+  }
+
+ 
+label {
+    cursor: default;
+}
+
+fieldset{
+    background-color: lightgrey;
+    border-radius: 5px;
+  }
+   /* .input{
+     /* height:25px; */
+    /* padding: 25px;
+    margin: 10px } */
+ 
+   
+  input
+  {    width: 90%;
+height: 30px;
+    background-color:white;
+    border-radius: 5px;
+font-size: x-large;
+
+  }
+  a {
+    text-decoration: none;
+    color: white;
+}
