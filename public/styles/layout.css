@@ -1,34 +1,13 @@
 
-
-
-   
-   fieldset{
-    background-color: lightgrey;
-  }
   
-  
+
 .title, .author{
     padding: 25px;
     margin: 10px;
   background-color: rgb(212, 219, 228);
 }
 
-header {
-    background-color: black;
-    color: white;
-    font-family: sans-serif;
-    height: 97px;
-    text-align:left;
 
-
-} 
-
-body{background-color:#bbb;
-    font-family: Arial, Helvetica, sans-serif;
-
-        display: flex;
-        flex-direction: column;
-justify-content: center;    }
 #but , .viewBut{
     font-size: xx-large;
     width: 100%;
@@ -44,18 +23,10 @@ border-radius: 5px;
   margin-bottom: 10%;
   width: 50%;
 }
-em{color: black;
-font-size: larger;}
-div{padding: 10px;
-    background-color: rgba(219, 216, 216, 0.979);
-    color: white;
-    text-align: center; 
-    border: white solid 2px;
-    border-radius: 5px;
-    width: 70%;
-    margin: auto;
-margin-bottom: 40px;
-}
+em , h3{color: black;
+font-size: larger;
+font-style: italic;}
+
 .counter{
   width: 100%;
   background-color: rgb(92, 85, 85);
@@ -70,24 +41,7 @@ div img{
  
   border: white solid 6px;
 }
-   fieldset{
-    background-color: lightgrey;
-    border-radius: 5px;
-  }
-   /* .input{
-     /* height:25px; */
-    /* padding: 25px;
-    margin: 10px } */
- 
-   
-  input
-  {    width: 90%;
-height: 30px;
-    background-color:white;
-    border-radius: 5px;
-font-size: x-large;
-
-  }
+  
   .input{
 height: 50px;
 width: 98%;
@@ -95,26 +49,7 @@ width: 98%;
   .input,input,#but{
       margin-bottom: 10px;
   }
-  footer{
-      height: 75px;
-      background-color: black;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-  }
-  
-/* user agent stylesheet */
-label {
-    cursor: default;
-}
-body {
-    background-color: rgb(159, 163, 163);
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
+ 
   .dot{
     margin: auto;
     height: 25px;
@@ -123,3 +58,52 @@ body {
     border-radius: 50%;
     display: inline-block;
   }
+  .dotp{
+    color: black;
+    margin: auto;
+    height: 19px;
+    width: 39px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+  }
+  .showbut{
+    color: black;
+  
+    height: 50px;
+    width: 164px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    /* flex-wrap: wrap; */
+    text-align: center;
+    font-size: large;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 5px;
+    
+
+  }
+ 
+  .updateBook{
+display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+  }
+  /* .detailbut{
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+  } */
+  .detailbut{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 20px;
+  }
+  
+        

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/layout.css">
+    <link rel="stylesheet" href="./styles/bace.css">
 
     <link rel="stylesheet" href="./styles/modules.css">
     <title>Test</title>
@@ -20,7 +21,7 @@
             </button>
             <div class="dropdown-content">
                 <a href="/">Home </a>
-                <a href="/searches/new">Search The Google Book Api</a>
+                <a href="./searches/new">Search The Google Book Api</a>
             </div>
         </div>
     </header>
@@ -30,7 +31,7 @@
 
     <div class="counter">
         <h2>
-            <%= bookcount %> Saved Books
+          <p class="dotp">  <%= bookcount %></p> Saved Books
         </h2>
     </div>
 
@@ -55,6 +56,11 @@
             </form>
         </div>
         <% }) %>
+
+        <footer> <span class="dot"></span> <span class="dot"></span>
+            <span class="dot"></span> <span class="dot"></span>
+        </footer>
+
 </body>
 
 </html>

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/bace.css">
     <link rel="stylesheet" href="../styles/layout.css">
     <title>Show Books</title>
 </head>
@@ -16,7 +17,7 @@
             </button>
             <div class="dropdown-content">
                 <a href="/">Home </a>
-                <a href="/searches/new">Search The Google Book Api</a>
+                <a href="/searches/new" >Search The Google Book Api</a>
             </div>
         </div>
     </header>
@@ -33,14 +34,14 @@
         <h2><%=book.title %></h2>
         <h3><%=book.authors %></h3>
         <p><%=book.description %></p>
-        <a href="/books/<%= book.id %>">View Details</a>
-        <button type="submit">Add This Book</button>
+        <button class="showbut"><a href="/books/<%= book.id %>">View Details</a></button>
+        <button type="submit" class="showbut">Add This Book</button>
         </div>
-    </form>
-        <!-- <% }) %>  -->
+    </form class="addbookclass">
+         <% }) %>  
 
         <% mylist.forEach(book => { %>
-            <section>
+            <div>
                <img id="show" src="<%= book.image_url %>"> 
                <h2 id="show"><%=book.title %></h2>
                <h3 id="show"><%=book.author%></h3>
@@ -51,13 +52,16 @@
                    <input type="hidden" name="author" value="<%= book.author%>">
                    <input type="hidden" name="description" value="<%= book.description%>">
                    <input type="hidden" name="isbn" value="<%= book.isbn%>">
-                   <button type="submit">Select Book</button>
-               </form></section>
+                   <button type="submit" class="showbut">Select Book</button>
+               </form></div>
            
        <% }) %>
 
-
-
+       <footer> <span class="dot"></span> <span class="dot"></span>
+        <span class="dot"></span> <span class="dot"></span>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="./app.js"></script>
         
 </body>
 </html>
